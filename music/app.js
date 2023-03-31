@@ -83,6 +83,19 @@ async function nextplayMusic() {
     }
 }
 
+app.post("/addsong", async(req, res) => {
+    const songData = req.body;
+
+    try {
+        const song = new Song(songData);
+        await song.save();
+        res.status(200).json({ message: 'Song added' });
+      } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'An error occurred' });
+      }
+});
+
 
 app.get("/play", async (req, res) => {
     const word = req.query.word;
