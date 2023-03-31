@@ -44,44 +44,46 @@ async function searchMusic(word) {
     const getData = await res.json();
     console.log(getData);
 
-    const musicBank = getData.result.songs.data;
-    musicBank.forEach(ele => {
-        queue.push(ele.id);
-    });
+    // const musicBank = getData.result.songs.data;
+    // musicBank.forEach(ele => {
+    //     queue.push(ele.id);
+    // });
 
-    if(queue.length === musicBank.length) {
-        nextplayMusic();
-    }
+    // if(queue.length === musicBank.length) {
+    //     nextplayMusic();
+    // }
 
-    res.status(200);
-    return queue;
+    // res.status(200);
+    // return queue;
+
+    return getData;
 }
 
 
 //musicが再生し終わったら、要素の先頭を削除する
-async function nextplayMusic() {
-    if(queue.length > 0) {
-        const trackID = queue[0];
-        console.log(`now on playing ${trackID}`);
+// async function nextplayMusic() {
+//     if(queue.length > 0) {
+//         const trackID = queue[0];
+//         console.log(`now on playing ${trackID}`);
 
-        //const res = await fetch(`https://api.music.apple.com/v1/catalog/jp/search?term=${word}&types=songs&limit=10`);
+//         //const res = await fetch(`https://api.music.apple.com/v1/catalog/jp/search?term=${word}&types=songs&limit=10`);
         
-        if(!res.ok) {
-            console.log("error", res.status, res.statusText);
-        }
+//         if(!res.ok) {
+//             console.log("error", res.status, res.statusText);
+//         }
 
-        music.authorize().then(function() {
-            music.player.play();
-            queue.shift();
-            nextplayMusic();
-          });
-        // res.body.on("playend", () => {
-        //     console.log(`finish song : ${trackID}`);
-        //     queue.shift();
-        //     nextplayMusic();
-        // });
-    }
-}
+//         music.authorize().then(function() {
+//             music.player.play();
+//             queue.shift();
+//             nextplayMusic();
+//           });
+//         // res.body.on("playend", () => {
+//         //     console.log(`finish song : ${trackID}`);
+//         //     queue.shift();
+//         //     nextplayMusic();
+//         // });
+//     }
+// }
 
 app.post("/addsong", async(req, res) => {
     const songData = req.body;
@@ -100,6 +102,8 @@ app.post("/addsong", async(req, res) => {
 app.get("/playsong", async (req, res) => {
     try {
         const nextSong = await Song.findOne().sort({ _id: 1 });
+
+        const playSong = searchMusic(nextSong);
     
         if (!nextSong) {
           res.status(404).json({ error: 'No songs in the queue' });
@@ -107,7 +111,7 @@ app.get("/playsong", async (req, res) => {
         }
     
         await nextSong.remove();
-        res.json(nextSong);
+        res.json(playSong);
       } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'An error occurred' });
