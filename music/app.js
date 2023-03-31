@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 
 
 //apple music authorization
-let music = MusicKit.getInstance();
+//let music = MusicKit.getInstance();
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, 'view', 'home.html'));
