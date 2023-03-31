@@ -12,6 +12,10 @@ app.use('/music', express.static(path.join(__dirname, 'images')));
 //app.use('/wafflemusic', express.static(path.join(__dirname, 'music')));
 app.use(bodyParser.json());
 
+
+//apple music authorization
+let music = MusicKit.getInstance();
+
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, 'view', 'home.html'));
 });
@@ -33,7 +37,7 @@ async function searchMusic(word) {
     });
 
     if(queue.length === musicBank.length) {
-        //nextplayMusic();
+        nextplayMusic();
     }
 
     res.status(200);
@@ -53,6 +57,11 @@ async function nextplayMusic() {
             console.log("error", res.status, res.statusText);
         }
 
+        music.authorize().then(function() {
+            music.player.play();
+            queue.shift();
+            nextplayMusic();
+          });
         // res.body.on("playend", () => {
         //     console.log(`finish song : ${trackID}`);
         //     queue.shift();
