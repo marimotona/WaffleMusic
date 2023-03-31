@@ -1,10 +1,23 @@
 const express = require("express");
+const { MongoClient, ServerApiVersion } = require('mongodb');
 //require("dotenv").config({ debug: true });
 const bodyParser = require('body-parser');
 const path = require('path');
 
 let app = express();
 const queue = [];
+
+
+const uri = "mongodb://localhost:27017/wafflemusic";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+
+client.connect(err => {
+    const collection = client.db("test").collection("devices");
+    // perform actions on the collection object
+    client.close();
+});
+
 
 
 app.use('/music', express.static(path.join(__dirname, 'view')));
