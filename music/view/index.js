@@ -33,4 +33,22 @@ async function stackMusic() {
 }
 
 
+async function playSong() {
+    try {
+        const response = await fetch('/playsong');
+    
+        if (response.ok) {
+          const song = await response.json();
+          const audio = new Audio(song.attributes.url);
+          audio.play();
+          audio.addEventListener('ended', playSong);
+        } else {
+          console.error('Error playing next song');
+        }
+      } catch (err) {
+          console.error('Error play song:', err);
+      }
+}
+
+
 //document.getElementById("submitmusic").addEventListener("click", stackMusic);

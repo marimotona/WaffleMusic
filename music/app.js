@@ -97,9 +97,21 @@ app.post("/addsong", async(req, res) => {
 });
 
 
-app.get("/play", async (req, res) => {
-    const word = req.query.word;
-    searchMusic(word);
+app.get("/playsong", async (req, res) => {
+    try {
+        const nextSong = await Song.findOne().sort({ _id: 1 });
+    
+        if (!nextSong) {
+          res.status(404).json({ error: 'No songs in the queue' });
+          return;
+        }
+    
+        await nextSong.remove();
+        res.json(nextSong);
+      } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'An error occurred' });
+      }
 });
 
 
