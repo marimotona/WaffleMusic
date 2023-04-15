@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="theme-color" content="#bfccff"> -->
+  
+      <!--サイトのタイトル・説明-->
+      <title>waffle-music</title>
+  
+    <!--外部ファイル読み込み-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+    <script src="/music/index.js" defer></script>
+  
+    <link rel="stylesheet" type="text/css" href="/music/music.css">
+  
+  </head>
+
+  <body>
+    <header>
+        <div class="header-group">
+            <div class="header-text" onclick="window.location.href='/'">waffle music</div>
+            <div class="header-text2">Search</div>
+        </div>
+    </header>
+
+    <div class="inputForm">
+        <input type="text" id="word" placeholder="word" class="search-text"/> 
+        <button type="submit" id="submitmusic" class="btn-square-pop">
+            <div id="text-button" onclick="stackMusic()">
+               SEARCH
+            </div>
+        </button>
+    </div>
+</body>
+
+</html>

@@ -1,10 +1,8 @@
-.header-text{
+.header-text, .header-text2 {
     position: relative;
     text-align: center;
-    /* width: 500px;
-    height: 46px; */
-    /* left: 535px; */
     top: 27px;
+    margin: 0 10px;
     
     font-family: 'Inter';
     font-style: normal;
@@ -13,6 +11,12 @@
     line-height: 39px;
     
     color: #ffffff;
+}
+
+.header-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 header {
