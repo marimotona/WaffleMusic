@@ -1,9 +1,8 @@
 .header-text{
-    position: relative;
-    text-align: center;
-    /* width: 500px;
-    height: 46px; */
-    /* left: 535px; */
+    position: absolute;
+    width: 500px;
+    height: 46px;
+    left: 535px;
     top: 27px;
     
     font-family: 'Inter';
@@ -62,58 +61,4 @@ button {
     border: none;
     align-items: center;
     background-color: transparent;
-}
-
-.playing_music {
-    text-align: center;
-    padding-top: 40px;
-}
-
-.playing_music p{
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 39px;
-    color: #334A52;
-}
-
-.playing_music img {
-    width: 300px;
-    height: 300px;
-}
-
-.song-detail {
-    font-family: 'Inter';
-    padding-top: 20px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 39px;
-    color: #334A52;
-}
-
-.stand_music {
-    text-align: center;
-    left: 1450px;
-    padding-top: 50px;
-}
-
-.stand_music p {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 39px;
-    color: #334A52;
-}
-
-.stand_count {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 50px;
-    line-height: 39px;
-    color: #334A52;
-    padding-top: 40px;
 }
