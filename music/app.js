@@ -78,7 +78,7 @@ app.get("/playsong", async (req, res) => {
         console.error(err);
         res.status(500).json({ error: 'An error occurred' });
       }
->>>>>>> eb39d6eef96cb4542cebc455b7176376a28b8309
+
 });
 
 
