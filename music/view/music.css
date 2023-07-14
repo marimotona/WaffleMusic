@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 .header-text{
     position: absolute;
     width: 500px;
     height: 46px;
     left: 535px;
+=======
+.header-text, .header-text2 {
+    position: relative;
+    text-align: center;
+>>>>>>> eb39d6eef96cb4542cebc455b7176376a28b8309
     top: 27px;
+    margin: 0 10px;
     
     font-family: 'Inter';
     font-style: normal;
@@ -12,6 +19,12 @@
     line-height: 39px;
     
     color: #ffffff;
+}
+
+.header-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 header {
